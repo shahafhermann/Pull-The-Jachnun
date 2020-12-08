@@ -152,15 +152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252188, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252188, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252188, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252188, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -177,14 +177,6 @@ PrefabInstance:
     - target: {fileID: 8732986726111252189, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Name
       value: JHead
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 5.0446177
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.69957125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
@@ -335,12 +327,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 57b7b41f343b4b04384f7d3d1628ae1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cf5fe505376e834eb86aada74ae1cd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.24, y: 4.76}
+  m_Size: {x: 3.84, y: 2.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -454,7 +446,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f7818de4ba63b54f80a42a2ff01ed7d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cebfae27369edf248a55bc0432549500, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -472,13 +464,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906642071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.010733539, w: 0.9999424}
+  m_LocalPosition: {x: 0.3, y: 0.51, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.17, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.23}
 --- !u!1 &2092765025
 GameObject:
   m_ObjectHideFlags: 0

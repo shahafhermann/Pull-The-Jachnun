@@ -38,7 +38,7 @@ public class BodyScript : MonoBehaviour
                 spawnPos = headBody.velocity;
                 spawnPos.Normalize();
             }
-            else spawnPos = Vector2.right;
+            else spawnPos = Vector2.left;
             spawnPos = new Vector2(transform.position.x, transform.position.y) - (spawnPos * spawnDistance);
             spawnRot = transform.rotation;
         }
@@ -82,6 +82,11 @@ public class BodyScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             addLink();
+        }
+        if (headBody.velocity.magnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(headBody.velocity.y, headBody.velocity.x) * Mathf.Rad2Deg + 180;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 

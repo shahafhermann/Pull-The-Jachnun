@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6312712756274251849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.26906586, y: 0.5159601, z: -0.46069318}
-  m_LocalScale: {x: 0.15, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,13 +73,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84c1139706b457e4887115625bc747da, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 4520ab1d78b29fc429cd557d897c8857, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.85, y: 1.43}
+  m_Size: {x: 4.81, y: 5.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -121,7 +121,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.57870114, y: -0.6474317}
+  m_ConnectedAnchor: {x: 3.8716412, y: 0.79058397}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -146,13 +146,13 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.2742588, y: -0.00000011920929}
-  - {x: 0.1991198, y: -0.5080316}
-  - {x: -0.23490223, y: -0.5062163}
-  - {x: -0.30545777, y: 0.0044223163}
-  - {x: -0.21372172, y: 0.54461753}
-  - {x: 0.16172437, y: 0.55148643}
-  - {x: 0.27417955, y: 0.004571421}
+  - {x: 2.1266103, y: -0.075115085}
+  - {x: 1.9763762, y: -2.2732306}
+  - {x: -2.0872536, y: -2.2526364}
+  - {x: -2.3079998, y: -0.10824984}
+  - {x: -1.9909773, y: 2.3098164}
+  - {x: 2.0391078, y: 2.2227921}
+  - {x: 2.126531, y: -0.0517648}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
