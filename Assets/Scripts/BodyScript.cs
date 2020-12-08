@@ -87,28 +87,32 @@ public class BodyScript : MonoBehaviour
 
     void checkFoodPickup(GameObject link)
     {
-        List<Vector2> vertices = new List<Vector2>();
+        List<Vector3> vertices = new List<Vector3>();
         vertices.Add(transform.position);
         int i = 1;
         while(links[i - 1] != link)
         {
-            vertices.Add(links[i].transform.position);
+            vertices.Add(links[i - 1].transform.position);
             i++;
         }
         int[] triangles = new int[vertices.Count * 3];
-        for (i = 0; i < vertices.Count - 1; i++)
+        for (i = 0; i < vertices.Count - 2; i++)
         {
             triangles[i * 3] = i + 2;
             triangles[i * 3 + 1] = 0;
             triangles[i * 3 + 2] = i + 1;
         }
+        Mesh container = new Mesh();
+        container.vertices = vertices.ToArray();
+        container.triangles = triangles;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "link")
         {
-
+            checkFoodPickup(collision.gameObject);
         }
     }
 }
