@@ -178,6 +178,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: JHead
       objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_Mass
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: up
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: down
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: left
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: right
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: moveSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
 --- !u!1 &271069891
