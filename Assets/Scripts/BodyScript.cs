@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class BodyScript : MonoBehaviour
 {
-    public float moveForce;
     public float spawnDistance;
     public GameObject linkPrefab;
     public List<GameObject> links;
     private GameObject playerParent;
     Rigidbody2D headBody;
+    
+    [Range(1f, 10f)] public float moveSpeed = 11f;
+
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode right;
+    public KeyCode left;
 
     // Start is called before the first frame update
     void Start()
     {
         links = new List<GameObject>();
-        moveForce = 40f;
+        moveForce = 30f;
         headBody = GetComponent<Rigidbody2D>();
         playerParent = transform.parent.gameObject;
         for (int i = 0; i < 5; i++)
@@ -63,23 +69,16 @@ public class BodyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            headBody.AddForce(Vector2.up * moveForce);
+        if (Input.GetKey(up)) {
+            headBody.velocity = new Vector2(headBody.velocity.x, moveSpeed);
+        } else if (Input.GetKey(down)) {
+            headBody.velocity = new Vector2(headBody.velocity.x, -moveSpeed);
+        } else if (Input.GetKey(right)) {
+            headBody.velocity = new Vector2(moveSpeed, headBody.velocity.y);
+        } else if (Input.GetKey(left)) {
+            headBody.velocity = new Vector2(-moveSpeed, headBody.velocity.y);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            headBody.AddForce(Vector2.right * moveForce);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            headBody.AddForce(Vector2.down * moveForce);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            headBody.AddForce(Vector2.left * moveForce);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))  // TODO: detect on circle closure
         {
             addLink();
         }
