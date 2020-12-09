@@ -21,10 +21,9 @@ public class BodyScript : MonoBehaviour
     void Start()
     {
         links = new List<GameObject>();
-        moveForce = 30f;
-        headBody = GetComponent<Rigidbody2D>();
+        headBody = GetComponent<Rigidbody2D>();  // TODO It might be better to just drag it in the inspector
         playerParent = transform.parent.gameObject;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) // TODO get rid of this
         {
             addLink();
         }
@@ -78,7 +77,7 @@ public class BodyScript : MonoBehaviour
         } else if (Input.GetKey(left)) {
             headBody.velocity = new Vector2(-moveSpeed, headBody.velocity.y);
         }
-        if (Input.GetKeyDown(KeyCode.Space))  // TODO: detect on circle closure
+        if (Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
         {
             addLink();
         }
