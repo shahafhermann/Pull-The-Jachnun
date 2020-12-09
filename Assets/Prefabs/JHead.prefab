@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 75395030fa2416e48ba32408d8b98318, type: 3}
+  m_Sprite: {fileID: -869067619546360546, guid: 69cdf9af5219dca47a2ac13f02e466cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 0
-  spawnDistance: 0.7
+  spawnDistance: 0.3
   linkPrefab: {fileID: 6312712756274251849, guid: 127ce5953d5d80442bb45d46eb4bbff2, type: 3}
   links:
   - {fileID: 0}
@@ -146,7 +146,7 @@ HingeJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -45
     m_UpperAngle: 45
