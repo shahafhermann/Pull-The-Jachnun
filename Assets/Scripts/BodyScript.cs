@@ -15,7 +15,7 @@ public class BodyScript : MonoBehaviour
     void Start()
     {
         links = new List<GameObject>();
-        moveForce = 30f;
+        moveForce = 40f;
         headBody = GetComponent<Rigidbody2D>();
         playerParent = transform.parent.gameObject;
         for (int i = 0; i < 5; i++)
