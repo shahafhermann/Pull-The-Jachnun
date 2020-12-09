@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80fae0e0-cbed-4cf7-b846-81f8b8c03772" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BodyScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BodyScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Pull The Jachnun/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pull The Jachnun/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,6 @@
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/StartGame.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Desktop/Scripts/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/Sound.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Border Collie/Assets/Scripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -69,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607347464596</updated>
       <workItem from="1607347477788" duration="5367000" />
-      <workItem from="1607431373502" duration="3772000" />
+      <workItem from="1607431373502" duration="4075000" />
     </task>
     <servers />
   </component>
