@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8732986726111252191}
   - component: {fileID: 8732986726111252195}
   - component: {fileID: 8732986726111252192}
-  - component: {fileID: 7686140021226414206}
+  - component: {fileID: 1779911775}
   m_Layer: 0
   m_Name: JHead
   m_TagString: Untagged
@@ -98,15 +98,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 14
   m_LinearDrag: 5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &8732986726111252195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,13 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13690e49cb3cd84da788789d6b3f74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 0
-  spawnDistance: 0.3
+  spawnDistance: 0.5
   linkPrefab: {fileID: 6312712756274251849, guid: 127ce5953d5d80442bb45d46eb4bbff2, type: 3}
+  manager: {fileID: 0}
   links:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  moveForce: 0
+  moveSpeed: 3.5
+  up: 273
+  down: 274
+  right: 275
+  left: 276
 --- !u!233 &8732986726111252192
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -150,8 +156,8 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -45
     m_UpperAngle: 45
---- !u!70 &7686140021226414206
-CapsuleCollider2D:
+--- !u!58 &1779911775
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -163,6 +169,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023457298, y: 0.046924595}
-  m_Size: {x: 5.591619, y: 3.5268207}
-  m_Direction: 1
+  m_Offset: {x: -1.42, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.3
