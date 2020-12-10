@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,11 @@ public class BodyScript : MonoBehaviour
     private GameObject playerParent;
     Rigidbody2D headBody;
     
-    [Range(1f, 10f)] public float moveSpeed = 11f;
+    [Range(0.1f, 7f)] 
+    public float moveSpeed = 3f;
+
+    [Range(50f, 200f)] 
+    public float rotationSpeed = 100f;
 
     public KeyCode up;
     public KeyCode down;
@@ -68,15 +73,18 @@ public class BodyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(up)) {
-            headBody.velocity = new Vector2(headBody.velocity.x, moveSpeed);
-        } else if (Input.GetKey(down)) {
-            headBody.velocity = new Vector2(headBody.velocity.x, -moveSpeed);
-        } else if (Input.GetKey(right)) {
-            headBody.velocity = new Vector2(moveSpeed, headBody.velocity.y);
-        } else if (Input.GetKey(left)) {
-            headBody.velocity = new Vector2(-moveSpeed, headBody.velocity.y);
-        }
+        // if (Input.GetKey(up)) {
+        //     headBody.MovePosition(transform.forward);
+        // } else if (Input.GetKey(right)) {
+        //     headBody.MoveRotation(
+        //         Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,90f,0), 
+        //             Time.deltaTime * rotationSpeed));
+        // } else if (Input.GetKey(left)) {
+        //     headBody.MoveRotation(
+        //         Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,-90f,0), 
+        //             Time.deltaTime * rotationSpeed));
+        // }
+        
         if (Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
         {
             addLink();
@@ -85,6 +93,28 @@ public class BodyScript : MonoBehaviour
         {
             float angle = Mathf.Atan2(headBody.velocity.y, headBody.velocity.x) * Mathf.Rad2Deg + 180;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
+    private void FixedUpdate() {
+        Vector3 playerPos = transform.eulerAngles;
+     
+        if (Input.GetKey(left)) {
+            if (playerPos.y > 93 || playerPos.y < 87) {
+                transform.Rotate(0, 0 ,1 * rotationSpeed * Time.deltaTime);
+            }
+        }
+      
+        if (Input.GetKey(right))
+        { 
+            if (playerPos.y > 273 || playerPos.y < 267) {
+                transform.Rotate(0, 0 ,-1 * rotationSpeed
+                                          * Time.deltaTime);
+            }
+        }
+        if (Input.GetKey(up)) {
+            Vector2 direction = -transform.right;
+            headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
         }
     }
 
