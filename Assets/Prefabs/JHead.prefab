@@ -101,7 +101,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -119,13 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13690e49cb3cd84da788789d6b3f74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 0
   spawnDistance: 0.3
   linkPrefab: {fileID: 6312712756274251849, guid: 127ce5953d5d80442bb45d46eb4bbff2, type: 3}
   links:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  moveSpeed: 11
+  up: 0
+  down: 0
+  right: 0
+  left: 0
 --- !u!233 &8732986726111252192
 HingeJoint2D:
   m_ObjectHideFlags: 0

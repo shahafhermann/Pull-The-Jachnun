@@ -6,6 +6,7 @@ TagManager:
   tags:
   - food
   - link
+  - Border
   layers:
   - Default
   - TransparentFX
