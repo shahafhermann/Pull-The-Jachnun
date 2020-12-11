@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BodyScript : MonoBehaviour
 {
+    public Rigidbody2D headBody;
     public float spawnDistance;
     public GameObject linkPrefab;
     public JachManager manager;
@@ -13,9 +14,10 @@ public class BodyScript : MonoBehaviour
     public static GameObject lastLink1;
     public static GameObject lastLink2;
     public int playerNum;
+    public static int initialLinksPerPlayer = 4;
     public float moveForce;
     private GameObject playerParent;
-    Rigidbody2D headBody;
+
     [Range(0.1f, 7f)] 
     public float moveSpeed = 3f;
 
@@ -23,7 +25,6 @@ public class BodyScript : MonoBehaviour
     public float rotationSpeed = 100f;
 
     public KeyCode up;
-    public KeyCode down;
     public KeyCode right;
     public KeyCode left;
 
@@ -33,9 +34,9 @@ public class BodyScript : MonoBehaviour
     {
         links = manager.links;
         links.Add(GameObject.Find("mid_link"));
-        headBody = GetComponent<Rigidbody2D>();  // TODO It might be better to just drag it in the inspector
+        //headBody = GetComponent<Rigidbody2D>();  // TODO It might be better to just drag it in the inspector
         playerParent = transform.parent.gameObject;
-        for (int i = 0; i < 5; i++) // TODO get rid of this
+        for (int i = 0; i < initialLinksPerPlayer; i++) // Needed! 
         {
             addLink();
         }
@@ -43,38 +44,6 @@ public class BodyScript : MonoBehaviour
 
     void addLink()
     {
-        //Vector2 lastPos;
-        //Vector2 spawnPos;
-        //GameObject last;
-        //Quaternion spawnRot;
-        //if (links.Count == 0)
-        //{
-        //    last = this.gameObject;
-        //    if (headBody.velocity.magnitude > 0)
-        //    {
-        //        spawnPos = headBody.velocity;
-        //        spawnPos.Normalize();
-        //    }
-        //    else spawnPos = Vector2.left;
-        //    spawnPos = new Vector2(transform.position.x, transform.position.y) - (spawnPos * spawnDistance);
-        //    spawnRot = transform.rotation;
-        //}
-        //else
-        //{
-        //    last = links[links.Count - 1];
-        //    lastPos = last.transform.position;
-        //    Vector2 beforeLastPos;
-        //    if (links.Count > 1) beforeLastPos = links[links.Count - 2].transform.position;
-        //    else beforeLastPos = transform.position;
-        //    spawnPos = 2* lastPos - beforeLastPos;
-        //    spawnRot = links[links.Count - 1].transform.rotation;
-        //}
-        //GameObject newLink = Instantiate(linkPrefab, spawnPos, spawnRot);
-        //newLink.GetComponent<HingeJoint2D>().enabled = false;
-        //last.GetComponent<HingeJoint2D>().enabled = true;
-        //last.GetComponent<HingeJoint2D>().connectedBody = newLink.GetComponent<Rigidbody2D>();
-        //newLink.transform.parent = playerParent.transform;
-        //links.Add(newLink);
         GameObject lastLink = (playerNum == 1) ? lastLink = links[0] : links[links.Count - 1];
         Vector2 push = (transform.position - lastLink.transform.position).normalized * spawnDistance;
         Vector2 spawnPos = new Vector2(lastLink.transform.position.x, lastLink.transform.position.y) + push;
@@ -91,27 +60,14 @@ public class BodyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKey(up)) {
-        //     headBody.MovePosition(transform.forward);
-        // } else if (Input.GetKey(right)) {
-        //     headBody.MoveRotation(
-        //         Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,90f,0), 
-        //             Time.deltaTime * rotationSpeed));
-        // } else if (Input.GetKey(left)) {
-        //     headBody.MoveRotation(
-        //         Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,-90f,0), 
-        //             Time.deltaTime * rotationSpeed));
-        // }
-        
-        if (Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
+        if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
         {
             addLink();
         }
-        //if (headBody.velocity.magnitude > 0.1f)
-        //{
-        //    float angle = Mathf.Atan2(headBody.velocity.y, headBody.velocity.x) * Mathf.Rad2Deg + 180;
-        //    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //}
+        if (playerNum == 2 && Input.GetKeyDown(KeyCode.LeftAlt))  // TODO: detect circle closure instead
+        {
+            addLink();
+        }
     }
 
     private void FixedUpdate() {
@@ -132,29 +88,44 @@ public class BodyScript : MonoBehaviour
         }
         if (Input.GetKey(up)) {
             Vector2 direction = -transform.right;
-            headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
+            Vector2 newPos = (playerNum == 1) ? headBody.position + moveSpeed * direction:
+                headBody.position - moveSpeed * direction;
+            headBody.MovePosition(newPos);
         }
     }
 
     void checkFoodPickup(GameObject link)
     {
-        //List<Vector2> vertices = new List<Vector2>();
-        //vertices.Add(transform.position);
-        //int i = 1;
-        //while (links[i - 1] != link)
-        //{
-        //    vertices.Add(links[i - 1].transform.position);
-        //    i++;
-        //}
-        //Vector2[] verArr = vertices.ToArray();
-        //foreach (GameObject food in manager.foods)
-        //{
-        //    if (Poly.ContainsPoint(verArr, food.transform.position))
-        //    {
-        //        Debug.Log("ate!"); // TODO delete and respawn
-        //        addLink();
-        //    }
-        //}
+        List<Vector2> vertices = new List<Vector2>();
+        vertices.Add(transform.position);
+        if (playerNum == 1)
+        {
+            int i = 1;
+            while (links[i - 1] != link)
+            {
+                vertices.Add(links[i - 1].transform.position);
+                i++;
+            }
+        }
+        else
+        {
+            int i = links.Count - 2;
+            while (links[i + 1] != link)
+            {
+                vertices.Add(links[i + 1].transform.position);
+                i--;
+            }
+            //vertices.Reverse();
+        }
+        Vector2[] verArr = vertices.ToArray();
+        foreach (GameObject food in manager.foods)
+        {
+            if (Poly.ContainsPoint(verArr, food.transform.position))
+            {
+                Debug.Log("ate!"); // TODO delete and respawn
+                addLink();
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
