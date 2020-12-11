@@ -10,26 +10,23 @@ public class BodyScript : MonoBehaviour
     public GameObject linkPrefab;
     public JachManager manager;
     private List<GameObject> links;
-    public static GameObject midLink;
-    public static GameObject lastLink1;
-    public static GameObject lastLink2;
+    // public static GameObject midLink;
+    // public static GameObject lastLink1;
+    // public static GameObject lastLink2;
     public int playerNum;
     public static int initialLinksPerPlayer = 4;
-    public float moveForce;
     private GameObject playerParent;
 
     [Range(0.1f, 7f)] 
-    public float moveSpeed = 3f;
+    public float moveSpeed = 3.5f;
 
-    [Range(50f, 200f)] 
-    public float rotationSpeed = 100f;
+    [Range(10f, 100f)]
+    public float rotationSpeed = 60f;
 
     public KeyCode up;
     public KeyCode right;
     public KeyCode left;
-
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         links = manager.links;
@@ -69,26 +66,23 @@ public class BodyScript : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Vector3 playerPos = transform.eulerAngles;
-     
         if (Input.GetKey(left)) {
-            if (playerPos.y > 93 || playerPos.y < 87) {
-                transform.Rotate(0, 0 ,1 * rotationSpeed * Time.deltaTime);
-            }
+            headBody.SetRotation(headBody.rotation + rotationSpeed * Time.deltaTime);
+            // if (playerPos.y > 93 || playerPos.y < 87) {
+            //     transform.Rotate(0, 0 ,rotationSpeed * Time.deltaTime);
+            // }
         }
       
-        if (Input.GetKey(right))
-        { 
-            if (playerPos.y > 273 || playerPos.y < 267) {
-                transform.Rotate(0, 0 ,-1 * rotationSpeed
-                                          * Time.deltaTime);
-            }
+        if (Input.GetKey(right)) { 
+            headBody.SetRotation( headBody.rotation - rotationSpeed * Time.deltaTime);
+            // if (playerPos.y > 273 || playerPos.y < 267) {
+            //     transform.Rotate(0, 0 ,- rotationSpeed * Time.deltaTime);
+            // }
         }
         if (Input.GetKey(up)) {
-            Vector2 direction = -transform.right;
-            Vector2 newPos = (playerNum == 1) ? headBody.position + moveSpeed * direction:
-                headBody.position - moveSpeed * direction;
-            headBody.MovePosition(newPos);
+            int dir = (playerNum == 1) ? -1 : 1;
+            Vector2 direction = dir * transform.right;
+            headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
         }
     }
 
