@@ -6,6 +6,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="BodyScript.cs" t="Include" />
+          <e p="JachManager.cs" t="Include" />
           <e p="PushBack.cs" t="Include" />
         </e>
       </e>

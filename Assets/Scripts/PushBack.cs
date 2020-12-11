@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class PushBack : MonoBehaviour {
 
+    [Range(1000f, 3000f)]
+    public float pushBackMagnitude = 1500f;
+
     void OnTriggerStay2D (Collider2D other)
     {
-        Debug.Log("Entered");
-        var magnitude = 10;
- 
         var force = other.transform.position - transform.position;
  
         force.Normalize ();
-        other.gameObject.GetComponent<Rigidbody2D>().AddForce(-force * magnitude);
+        other.gameObject.GetComponent<Rigidbody2D>().AddForce(-force * pushBackMagnitude);
     }
 }
