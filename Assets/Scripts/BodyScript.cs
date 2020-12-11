@@ -7,7 +7,7 @@ public class BodyScript : MonoBehaviour
     public float spawnDistance;
     public GameObject linkPrefab;
     public JachManager manager;
-    public static LinkedList<GameObject> links;
+    private List<GameObject> links;
     public static GameObject midLink;
     public static GameObject lastLink1;
     public static GameObject lastLink2;
@@ -15,32 +15,21 @@ public class BodyScript : MonoBehaviour
     public float moveForce;
     private GameObject playerParent;
     Rigidbody2D headBody;
-    
     [Range(1f, 10f)] public float moveSpeed = 11f;
-
     public KeyCode up;
     public KeyCode down;
     public KeyCode right;
     public KeyCode left;
 
 
-    private void Awake()
-    {
-        midLink = GameObject.Find("mid_link");
-        lastLink1 = GameObject.Find("JLink_Hinge1");
-        lastLink2 = GameObject.Find("JLink_Hinge2");
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        moveForce = 30f;
         headBody = GetComponent<Rigidbody2D>();
+        links = manager.links;
+        moveForce = 30f;
         playerParent = transform.parent.gameObject;
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    addLink();
-        //}
+        links.Add(GameObject.Find("mid_link"));
     }
 
     void addLink()
@@ -77,21 +66,17 @@ public class BodyScript : MonoBehaviour
         //last.GetComponent<HingeJoint2D>().connectedBody = newLink.GetComponent<Rigidbody2D>();
         //newLink.transform.parent = playerParent.transform;
         //links.Add(newLink);
-
-
-        GameObject lastLink = (playerNum == 1) ? lastLink1 : lastLink2;
-        Vector2 spawnPos = midLink.transform.position + (lastLink.transform.position - midLink.transform.position) / 2;
-        GameObject newLink = Instantiate(linkPrefab, spawnPos, lastLink.transform.rotation);
-        lastLink.GetComponent<HingeJoint2D>().connectedBody = newLink.GetComponent<Rigidbody2D>();
-        newLink.GetComponent<HingeJoint2D>().connectedBody = midLink.GetComponent<Rigidbody2D>();
+        GameObject lastLink = (playerNum == 1) ? lastLink = links[0] : links[links.Count - 1];
+        Vector2 push = (transform.position - lastLink.transform.position).normalized * spawnDistance;
+        Vector2 spawnPos = new Vector2(lastLink.transform.position.x, lastLink.transform.position.y) + push;
+        headBody.transform.position = (spawnPos + 1.8f * push);
+        GameObject newLink = Instantiate(linkPrefab, spawnPos, Quaternion.Slerp(transform.rotation, lastLink.transform.rotation, 0.5f));
         newLink.transform.parent = playerParent.transform;
-        //newLink.GetComponent<HingeJoint2D>().enabled = false;
-        //last.GetComponent<HingeJoint2D>().enabled = true;
-        //last.GetComponent<HingeJoint2D>().connectedBody = newLink.GetComponent<Rigidbody2D>();
-        //newLink.transform.parent = playerParent.transform;
-        //links.Add(newLink);
-
-
+        GetComponent<HingeJoint2D>().connectedBody = newLink.GetComponent<Rigidbody2D>();
+        newLink.GetComponent<HingeJoint2D>().connectedBody = lastLink.GetComponent<Rigidbody2D>();
+        newLink.transform.parent = playerParent.transform;
+        if (playerNum == 1) links.Insert(0, newLink);
+        else links.Add(newLink);
     }
 
     // Update is called once per frame
