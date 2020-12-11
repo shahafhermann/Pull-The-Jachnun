@@ -13,11 +13,13 @@ public class JachManager : MonoBehaviour
     {
         foods = new List<GameObject>();
         links = new List<GameObject>();
+        foods.Add(GameObject.Find("Egg"));
+        links.Add(GameObject.Find("mid_link"));
     }
 
     void Start()
     {
-        foods.Add(GameObject.Find("Egg"));   
+
     }
 
     // Update is called once per frame

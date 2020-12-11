@@ -33,8 +33,6 @@ public class BodyScript : MonoBehaviour
     void Start()
     {
         links = manager.links;
-        links.Add(GameObject.Find("mid_link"));
-        //headBody = GetComponent<Rigidbody2D>();  // TODO It might be better to just drag it in the inspector
         playerParent = transform.parent.gameObject;
         for (int i = 0; i < initialLinksPerPlayer; i++) // Needed! 
         {
@@ -97,10 +95,10 @@ public class BodyScript : MonoBehaviour
     void checkFoodPickup(GameObject link)
     {
         List<Vector2> vertices = new List<Vector2>();
-        vertices.Add(transform.position);
         if (playerNum == 1)
         {
             int i = 1;
+            vertices.Add(transform.position);
             while (links[i - 1] != link)
             {
                 vertices.Add(links[i - 1].transform.position);
@@ -109,20 +107,18 @@ public class BodyScript : MonoBehaviour
         }
         else
         {
-            int i = links.Count - 2;
-            while (links[i + 1] != link)
+            for (int i = links.IndexOf(link); i < links.Count; i++)
             {
-                vertices.Add(links[i + 1].transform.position);
-                i--;
+                vertices.Add(links[i].transform.position);
             }
-            //vertices.Reverse();
+            vertices.Add(transform.position);
         }
         Vector2[] verArr = vertices.ToArray();
         foreach (GameObject food in manager.foods)
         {
             if (Poly.ContainsPoint(verArr, food.transform.position))
             {
-                Debug.Log("ate!"); // TODO delete and respawn
+                // TODO: notify about the food that got eaten (Gameobject food)
                 addLink();
             }
         }
