@@ -14,10 +14,10 @@ public class BodyScript : MonoBehaviour
     // public static GameObject lastLink1;
     // public static GameObject lastLink2;
     public int playerNum;
-    public static int initialLinksPerPlayer = 4;
+    public static int initialLinksPerPlayer = 5;
     private GameObject playerParent;
 
-    [Range(0.1f, 7f)] 
+    [Range(0.1f, 10f)] 
     public float moveSpeed = 5f;
 
     [Range(2f, 30f)]
