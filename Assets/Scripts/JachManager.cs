@@ -66,7 +66,7 @@ public class JachManager : MonoBehaviour
             
             // Passed the tests, instantiate
             curEgg = Instantiate(eggPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
-            foods.Add(GameObject.Find("Egg"));
+            foods.Add(curEgg);
             notValid = false;
         }
     }
