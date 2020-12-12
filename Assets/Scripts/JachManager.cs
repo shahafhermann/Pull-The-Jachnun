@@ -19,7 +19,10 @@ public class JachManager : MonoBehaviour
 
     public GameObject eggPrefab;
     private GameObject curEgg;
-
+    
+    private int p1Score = 0;
+    private int p2Score = 0;
+    
     private void Awake()
     {
         foods = new List<GameObject>();
@@ -33,6 +36,17 @@ public class JachManager : MonoBehaviour
         zoomCurr = zoomTime;
         
         spawnEgg(false);
+    }
+
+    public void addPoint(int playerNum) {
+        switch (playerNum) {
+            case 1:
+                p1Score++;
+                break;
+            case 2:
+                p2Score++;
+                break;
+        }
     }
 
     public GameObject getCurrentEgg() {

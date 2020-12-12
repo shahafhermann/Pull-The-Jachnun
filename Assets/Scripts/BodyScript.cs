@@ -122,6 +122,7 @@ public class BodyScript : MonoBehaviour
             // TODO: notify about the food that got eaten (Gameobject food)
             // food.SetActive(false);
             manager.spawnEgg(true);
+            manager.addPoint(playerNum);
             addLink();
         }
     }
