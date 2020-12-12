@@ -248,6 +248,7 @@ MonoBehaviour:
   zoomTime: 2
   links: []
   foods: []
+  eggPrefab: {fileID: 1901728004160747292, guid: a9b227ac0de5d4ed9b080a45bbabd7b6, type: 3}
 --- !u!4 &418716650
 Transform:
   m_ObjectHideFlags: 0
@@ -690,6 +691,14 @@ PrefabInstance:
     - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
       propertyPath: rotationSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259146307533283618, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.019417802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259146307610055877, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.019417802
       objectReference: {fileID: 0}
     - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
       propertyPath: manager
