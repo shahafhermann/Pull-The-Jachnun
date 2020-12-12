@@ -105,15 +105,24 @@ public class BodyScript : MonoBehaviour
             vertices.Add(transform.position);
         }
         Vector2[] verArr = vertices.ToArray();
-        foreach (GameObject food in manager.foods)
+        // foreach (GameObject food in manager.foods)
+        // {
+        //     if (Poly.ContainsPoint(verArr, food.transform.position))
+        //     {
+        //         // TODO: notify about the food that got eaten (Gameobject food)
+        //         // food.SetActive(false);
+        //         manager.spawnEgg(true);
+        //         addLink();
+        //     }
+        // }
+        // manager.foods.Add(manager.getCurrentEgg());
+        
+        if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position))
         {
-            if (Poly.ContainsPoint(verArr, food.transform.position))
-            {
-                // TODO: notify about the food that got eaten (Gameobject food)
-                // food.SetActive(false);
-                manager.spawnEgg(true);
-                addLink();
-            }
+            // TODO: notify about the food that got eaten (Gameobject food)
+            // food.SetActive(false);
+            manager.spawnEgg(true);
+            addLink();
         }
     }
 

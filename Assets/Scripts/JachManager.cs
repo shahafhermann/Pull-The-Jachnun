@@ -35,6 +35,10 @@ public class JachManager : MonoBehaviour
         spawnEgg(false);
     }
 
+    public GameObject getCurrentEgg() {
+        return curEgg;
+    }
+    
     /**
      * Instantiate the first egg at a position different than the player's
      */
@@ -57,16 +61,19 @@ public class JachManager : MonoBehaviour
             }
             
             // Check proximity to body
+            bool shouldCont = false;
             foreach (GameObject link in links) {
                 if (math.abs(xPos - link.transform.position.x) < 2 &&
                     math.abs(yPos - link.transform.position.y) < 2) {
-                    continue;
+                    shouldCont = true;
                 }
             }
+            if (shouldCont) {
+                continue; }
             
             // Passed the tests, instantiate
             curEgg = Instantiate(eggPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
-            foods.Add(curEgg);
+            // foods.Add(curEgg);
             notValid = false;
         }
     }
