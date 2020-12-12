@@ -9,6 +9,9 @@ public class JachManager : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
     public GameObject camera;
+    public GameObject shotPrefab;
+    private GameObject[] shotPool;
+    int currShotIdx;
     public float maxCameraDistance;
     public float viewMargin;
     public float zoomTime;
@@ -34,8 +37,22 @@ public class JachManager : MonoBehaviour
     {
         startPos = camera.transform.position;
         zoomCurr = zoomTime;
-        
         spawnEgg(false);
+        shotPool = new GameObject[30];
+        for (int i = 0; i < 20; i++)
+        {
+            shotPool[i] = Instantiate(shotPrefab);
+            shotPool[i].GetComponent<ShotScript>().setId(i);
+            shotPool[i].SetActive(false);
+        }
+        currShotIdx = 0;
+    }
+
+    public GameObject getShot()
+    {
+        GameObject shot = shotPool[currShotIdx];
+        currShotIdx = (currShotIdx == 29) ? 0 : currShotIdx + 1;
+        return shot;
     }
 
     public void addPoint(int playerNum) {

@@ -26,7 +26,8 @@ public class BodyScript : MonoBehaviour
     public KeyCode up;
     public KeyCode right;
     public KeyCode left;
-    
+    public KeyCode fire;
+
     void Start()
     {
         links = manager.links;
@@ -81,6 +82,10 @@ public class BodyScript : MonoBehaviour
             Vector2 direction = dir * transform.right;
             headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
         }
+        if (Input.GetKey(fire))
+        {
+            shoot();
+        }
     }
 
     void checkFoodPickup(GameObject link)
@@ -105,17 +110,6 @@ public class BodyScript : MonoBehaviour
             vertices.Add(transform.position);
         }
         Vector2[] verArr = vertices.ToArray();
-        // foreach (GameObject food in manager.foods)
-        // {
-        //     if (Poly.ContainsPoint(verArr, food.transform.position))
-        //     {
-        //         // TODO: notify about the food that got eaten (Gameobject food)
-        //         // food.SetActive(false);
-        //         manager.spawnEgg(true);
-        //         addLink();
-        //     }
-        // }
-        // manager.foods.Add(manager.getCurrentEgg());
         
         if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position))
         {
@@ -133,6 +127,17 @@ public class BodyScript : MonoBehaviour
         {
             checkFoodPickup(collision.gameObject);
         }
+    }
+
+    void shoot()
+    {
+        GameObject shot = manager.getShot();
+        shot.SetActive(true);
+        shot.transform.position = transform.position;
+        if (playerNum == 1) shot.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180));
+        else shot.transform.rotation = transform.rotation;
+        shot.GetComponent<ShotScript>().setPlayer(playerNum);
+       
     }
 
     public static class Poly
