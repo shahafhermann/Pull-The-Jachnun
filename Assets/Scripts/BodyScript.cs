@@ -9,10 +9,8 @@ public class BodyScript : MonoBehaviour
     public float spawnDistance;
     public GameObject linkPrefab;
     public JachManager manager;
+    public float hitPenalty;
     private List<GameObject> links;
-    // public static GameObject midLink;
-    // public static GameObject lastLink1;
-    // public static GameObject lastLink2;
     public int playerNum;
     public static int initialLinksPerPlayer = 5;
     private GameObject playerParent;
@@ -31,6 +29,7 @@ public class BodyScript : MonoBehaviour
     void Start()
     {
         links = manager.links;
+        hitPenalty = 0f;
         playerParent = transform.parent.gameObject;
         for (int i = 0; i < initialLinksPerPlayer; i++) // Needed! 
         {
@@ -64,9 +63,18 @@ public class BodyScript : MonoBehaviour
         {
             addLink();
         }
+        if (hitPenalty == 0 && Input.GetKeyDown(fire))
+        {
+            shoot();
+        }
     }
 
     private void FixedUpdate() {
+        if (hitPenalty > 0)
+        {
+            hitPenalty -= Time.deltaTime;
+            return;
+        }
         if (Input.GetKey(left))
         {
             headBody.MoveRotation(transform.eulerAngles.z + rotationSpeed);
@@ -81,10 +89,6 @@ public class BodyScript : MonoBehaviour
             int dir = (playerNum == 1) ? -1 : 1;
             Vector2 direction = dir * transform.right;
             headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
-        }
-        if (Input.GetKey(fire))
-        {
-            shoot();
         }
     }
 
@@ -136,8 +140,24 @@ public class BodyScript : MonoBehaviour
         shot.transform.position = transform.position;
         if (playerNum == 1) shot.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180));
         else shot.transform.rotation = transform.rotation;
-        shot.GetComponent<ShotScript>().setPlayer(playerNum);
-       
+        shot.GetComponent<ShotScript>().setPlayer(playerNum);  
+    }
+
+    public void takeHit()
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        IEnumerator flashCR()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                renderer.enabled = false;
+                yield return new WaitForSeconds(0.25f);
+                renderer.enabled = true;
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
+        StartCoroutine(flashCR());
+        if (hitPenalty == 0) hitPenalty = 5;
     }
 
     public static class Poly
