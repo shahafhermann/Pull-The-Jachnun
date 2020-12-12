@@ -129,6 +129,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 842081762885470090}
     m_Modifications:
+    - target: {fileID: 1779911775, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.42
+      objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252188, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -187,15 +191,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_Anchor.x
+      value: -3.180582
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 4.8
+      value: 1.6194177
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -211,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: up
-      value: 264
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: down
@@ -219,11 +227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: left
-      value: 260
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: right
-      value: 262
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: manager
@@ -235,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 8259146307610055930}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: moveSpeed
-      value: 0.12
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: playerNum
@@ -243,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: rotationSpeed
-      value: 180
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
@@ -318,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Constraints
@@ -329,8 +337,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_Anchor.x
+      value: 3.180582
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -4.8
+      value: -1.6194177
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -366,11 +378,11 @@ PrefabInstance:
       objectReference: {fileID: 8259146307533283613}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: moveSpeed
-      value: 0.12
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: rotationSpeed
-      value: 180
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
