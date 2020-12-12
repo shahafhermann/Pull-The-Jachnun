@@ -18,10 +18,10 @@ public class BodyScript : MonoBehaviour
     private GameObject playerParent;
 
     [Range(0.1f, 7f)] 
-    public float moveSpeed = 3.5f;
+    public float moveSpeed = 5f;
 
     [Range(2f, 30f)]
-    public float rotationSpeed = 60f;
+    public float rotationSpeed = 5f;
 
     public KeyCode up;
     public KeyCode right;
@@ -66,33 +66,14 @@ public class BodyScript : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        //if (Input.GetKey(left)) {
-        //    headBody.SetRotation(headBody.rotation + rotationSpeed * Time.deltaTime);
-        //    // if (playerPos.y > 93 || playerPos.y < 87) {
-        //    //     transform.Rotate(0, 0 ,rotationSpeed * Time.deltaTime);
-        //    // }
-        //}
-      
-        //if (Input.GetKey(right)) { 
-        //    headBody.SetRotation( headBody.rotation - rotationSpeed * Time.deltaTime);
-        //    // if (playerPos.y > 273 || playerPos.y < 267) {
-        //    //     transform.Rotate(0, 0 ,- rotationSpeed * Time.deltaTime);
-        //    // }
-        //}
         if (Input.GetKey(left))
         {
             headBody.MoveRotation(transform.eulerAngles.z + rotationSpeed);
-            // if (playerPos.y > 93 || playerPos.y < 87) {
-            //     transform.Rotate(0, 0 ,rotationSpeed * Time.deltaTime);
-            // }
         }
 
         if (Input.GetKey(right))
         {
             headBody.MoveRotation(transform.eulerAngles.z - rotationSpeed);
-            // if (playerPos.y > 273 || playerPos.y < 267) {
-            //     transform.Rotate(0, 0 ,- rotationSpeed * Time.deltaTime);
-            // }
         }
 
         if (Input.GetKey(up)) {
@@ -129,7 +110,8 @@ public class BodyScript : MonoBehaviour
             if (Poly.ContainsPoint(verArr, food.transform.position))
             {
                 // TODO: notify about the food that got eaten (Gameobject food)
-                food.SetActive(false);
+                // food.SetActive(false);
+                manager.spawnEgg(true);
                 addLink();
             }
         }
