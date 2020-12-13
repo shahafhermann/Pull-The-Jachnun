@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BodyScript : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class BodyScript : MonoBehaviour
     public GameObject linkPrefab;
     public JachManager manager;
     public float hitPenalty;
+    public float fullStamina;
+    public float stamina;
+    public Text staminaBar;
+    public float moveCost;
+    public int shootCost;
+    public float rechargeRate;
     private List<GameObject> links;
     public int playerNum;
     public static int initialLinksPerPlayer = 5;
@@ -30,8 +37,10 @@ public class BodyScript : MonoBehaviour
     {
         links = manager.links;
         hitPenalty = 0f;
+        fullStamina = 100;
+        stamina = fullStamina;
         playerParent = transform.parent.gameObject;
-        for (int i = 0; i < initialLinksPerPlayer; i++) // Needed! 
+        for (int i = 0; i < initialLinksPerPlayer; i++) 
         {
             addLink();
         }
@@ -65,11 +74,16 @@ public class BodyScript : MonoBehaviour
         }
         if (hitPenalty == 0 && Input.GetKeyDown(fire))
         {
-            shoot();
+            if (shootCost <= stamina)
+            {
+                shoot();
+                stamina -= shootCost;
+            }
         }
+        staminaHandler();
     }
 
-    private void FixedUpdate() {
+    void FixedUpdate() {
         if (hitPenalty > 0)
         {
             hitPenalty -= Time.deltaTime;
@@ -86,10 +100,24 @@ public class BodyScript : MonoBehaviour
         }
 
         if (Input.GetKey(up)) {
-            int dir = (playerNum == 1) ? -1 : 1;
-            Vector2 direction = dir * transform.right;
-            headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
+            if (moveCost <= stamina)
+            {
+                stamina -= moveCost;
+                int dir = (playerNum == 1) ? -1 : 1;
+                Vector2 direction = dir * transform.right;
+                headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
+            }
+           
         }
+    }
+
+    void staminaHandler()
+    {
+        if (stamina < fullStamina)
+        {
+            stamina = (stamina + rechargeRate * Time.deltaTime <= fullStamina) ? stamina + rechargeRate * Time.deltaTime : fullStamina;
+        }
+        staminaBar.text = ((int)stamina).ToString();
     }
 
     void checkFoodPickup(GameObject link)
