@@ -48,10 +48,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PushBack.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FoodWaypoint.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/JachManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InstructionsMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BodyScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Visibility.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/JachManager.cs" />
       </list>
     </option>
   </component>
