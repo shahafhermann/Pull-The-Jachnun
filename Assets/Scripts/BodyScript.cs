@@ -141,18 +141,25 @@ public class BodyScript : MonoBehaviour
         
         if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position)) {
             // manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", true);
-            GameObject curEgg = manager.spawnEgg(true);
+            GameObject curEgg = manager.spawnFood("egg");
             manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", false);
             StartCoroutine(showAnimation(curEgg));
+            manager.addPoint(playerNum);
+            addLink();
+        } else if (Poly.ContainsPoint(verArr, manager.getCurrentTomato().transform.position)) {
+            // manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", true);
+            GameObject curTomato = manager.spawnFood("tomato");
+            manager.getCurrentTomato().GetComponent<Animator>().SetBool("PickedUp", false);
+            StartCoroutine(showAnimation(curTomato));
             manager.addPoint(playerNum);
             addLink();
         }
     }
 
-    IEnumerator showAnimation(GameObject curEgg) {
-        curEgg.GetComponent<Animator>().SetBool("PickedUp", true);
+    IEnumerator showAnimation(GameObject curFood) {
+        curFood.GetComponent<Animator>().SetBool("PickedUp", true);
         yield return new WaitForSecondsRealtime(1);
-        Destroy(curEgg);
+        Destroy(curFood);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
