@@ -27,18 +27,22 @@ public class JachManager : MonoBehaviour
     private float zoomCurr;
     public List<GameObject> links;
     public List<GameObject> foods;
+    
     public GameObject eggPrefab;
     public Image wayPoint;
     public Vector3 wayPointOffset;
+    
     Vector3 startPos;
     private GameObject curEgg;
     private float staminaDrainFactor;
+    
     private bool timeUp;
+    public float roundTime;
+    public Text timerText;
+    
     private int p1Score = 0;
     private int p2Score = 0;
-    
-    public Image wayPoint;
-    
+
     private GameObject[] shotPool;
     int currShotIdx;
 
@@ -47,6 +51,9 @@ public class JachManager : MonoBehaviour
         foods = new List<GameObject>();
         links = new List<GameObject>();
         links.Add(GameObject.Find("mid_link"));
+
+        timeUp = false;
+        // roundTime = 60;
     }
 
     void Start()
@@ -145,7 +152,7 @@ public class JachManager : MonoBehaviour
         GameObject mask = (player == 1) ? mask1 : mask2;
         if (staminaDrainFactor == 0) staminaDrainFactor =
                 stamina.transform.GetComponent<RectTransform>().rect.height * uiCanvas.scaleFactor;
-        Vector3 move = Vector3.up * staminaDrainFactor * (percent / 100);
+        Vector3 move = staminaDrainFactor * (percent / 100) *  Vector3.up;
         stamina.transform.position -= move;
         mask.transform.position += move;
     }
@@ -154,43 +161,52 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         camera.transform.position = moveCamera();
-
-        // Food Waypoints
-        if(!curEgg.GetComponent<Renderer>().isVisible){
-            if (!wayPoint.enabled) {
-                wayPoint.enabled = true;
-            }
-            float minX = wayPoint.GetPixelAdjustedRect().width / 2;
-            float maxX = Screen.width - minX;
-            float minY = wayPoint.GetPixelAdjustedRect().height / 2;
-            float maxY = Screen.height - minY;
-
-            Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position);
-            pos.x = Mathf.Clamp(pos.x, minX, maxX);
-            pos.y = Mathf.Clamp(pos.y, minY, maxY);
-            wayPoint.transform.position = pos;
-        }
-        else if (wayPoint.enabled){
-            wayPoint.enabled = false;
-        }
         
-        if (Input.GetKeyDown(KeyCode.R)) // TODO: delete
-        {
-            timeUp = true;
-        }
+        showWayPoints();
+        
+        // Check Timer
         if (timeUp)
         {
             endGame();
             timeUp = false;
         }
+        else {
+            if (roundTime > 0)
+            {
+                roundTime -= Time.deltaTime;
+                roundTime = (roundTime < 0) ? 0 : roundTime;
+                timerText.text = ((int) roundTime).ToString();
+            }
+            else
+            {
+                roundTime = 0;
+                timeUp = true;
+            }
+        }
+    }
+
+    /**
+     * Food Waypoints
+     */
+    private void showWayPoints() {
+        // if (!curEgg.GetComponent<Renderer>().isVisible) {
+        //     if (!wayPoint.enabled) {
+        //         wayPoint.enabled = true;
+        //     }
+            
         float minX = wayPoint.GetPixelAdjustedRect().width / 2;
         float maxX = Screen.width - minX;
         float minY = wayPoint.GetPixelAdjustedRect().height / 2;
         float maxY = Screen.height - minY;
+
         Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + wayPointOffset);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         wayPoint.transform.position = pos;
+        // }
+        // else if (wayPoint.enabled) {
+        //     wayPoint.enabled = false;
+        // }
     }
 
     void endGame()
