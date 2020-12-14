@@ -169,22 +169,13 @@ public class JachManager : MonoBehaviour
         
         showWayPoints();
         
-        // Check Timer
-        if (timeUp)
-        {
-            endGame();
-            timeUp = false;
+        if (roundTime > 0) {
+            roundTime -= Time.deltaTime;
+            roundTime = (roundTime < 0) ? 0 : roundTime;
+            timerText.text = ((int) roundTime).ToString();
         }
         else {
-            if (roundTime > 0) {
-                roundTime -= Time.deltaTime;
-                roundTime = (roundTime < 0) ? 0 : roundTime;
-                timerText.text = ((int) roundTime).ToString();
-            }
-            else {
-                roundTime = 0;
-                timeUp = true;
-            }
+            endGame();
         }
     }
 
