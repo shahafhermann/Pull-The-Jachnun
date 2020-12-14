@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BodyScript : MonoBehaviour
@@ -138,14 +139,20 @@ public class BodyScript : MonoBehaviour
         }
         Vector2[] verArr = vertices.ToArray();
         
-        if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position))
-        {
-            // TODO: notify about the food that got eaten (Gameobject food)
-            // food.SetActive(false);
-            manager.spawnEgg(true);
+        if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position)) {
+            // manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", true);
+            GameObject curEgg = manager.spawnEgg(true);
+            manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", false);
+            StartCoroutine(showAnimation(curEgg));
             manager.addPoint(playerNum);
             addLink();
         }
+    }
+
+    IEnumerator showAnimation(GameObject curEgg) {
+        curEgg.GetComponent<Animator>().SetBool("PickedUp", true);
+        yield return new WaitForSecondsRealtime(1);
+        Destroy(curEgg);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
