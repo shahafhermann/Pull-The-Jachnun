@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1302723820812287101
-    second: Untitled_Artwork_0
+    second: playerText
   - first:
       213: 6146782616825927046
     second: staminatank
@@ -16,7 +16,7 @@ TextureImporter:
     second: Stamina Bar 2
   - first:
       213: -7234202399015867521
-    second: Untitled_Artwork_0
+    second: playerText
   - first:
       213: 4044233625562933715
     second: Untitled_Artwork_1
@@ -170,27 +170,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork_0
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 1943
-        width: 1
-        height: 2
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7cb4f3b964341210800000000000000
-      internalID: 1302723820812287101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: staminatank
       rect:
         serializedVersion: 2
@@ -241,7 +220,7 @@ TextureImporter:
         width: 313
         height: 1234
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,6 +228,27 @@ TextureImporter:
       bones: []
       spriteID: d29f15f95aaa64430800000000000000
       internalID: 3766885766661273901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerText
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 1562
+        width: 476
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b616d1f33fa9b90800000000000000
+      internalID: -7234202399015867521
       vertices: []
       indices: 
       edges: []

@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class JachManager : MonoBehaviour
@@ -16,26 +17,29 @@ public class JachManager : MonoBehaviour
     public GameObject mask1;
     public GameObject mask2;
     public Canvas uiCanvas;
+    public GameObject endScreenPrefab;
     public GameObject shotPrefab;
-    private GameObject[] shotPool;
-    int currShotIdx;
+    public Sprite winner2;
+    public Sprite tie;
     public float maxCameraDistance;
     public float viewMargin;
     public float zoomTime;
     private float zoomCurr;
     public List<GameObject> links;
     public List<GameObject> foods;
-    Vector3 startPos;
     public GameObject eggPrefab;
-    private GameObject curEgg;
-    private float staminaDrainFactor;
-    private int p1Score = 0;
-    private int p2Score = 0;
-    
-    
     public Image wayPoint;
     public Vector3 wayPointOffset;
-    
+    Vector3 startPos;
+    private GameObject curEgg;
+    private float staminaDrainFactor;
+    private bool timeUp;
+    private int p1Score = 0;
+    private int p2Score = 0;
+    private GameObject[] shotPool;
+    int currShotIdx;
+
+
     private void Awake()
     {
         foods = new List<GameObject>();
@@ -45,6 +49,7 @@ public class JachManager : MonoBehaviour
 
     void Start()
     {
+        timeUp = false;
         startPos = camera.transform.position;
         zoomCurr = zoomTime;
         spawnEgg(false);
@@ -147,16 +152,41 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         camera.transform.position = moveCamera();
-        
-        // Food Waypoints
+        if (Input.GetKeyDown(KeyCode.R)) // TODO: delete
+        {
+            timeUp = true;
+        }
+        if (timeUp)
+        {
+            endGame();
+            timeUp = false;
+        }
         float minX = wayPoint.GetPixelAdjustedRect().width / 2;
         float maxX = Screen.width - minX;
         float minY = wayPoint.GetPixelAdjustedRect().height / 2;
         float maxY = Screen.height - minY;
-
         Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + wayPointOffset);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         wayPoint.transform.position = pos;
+    }
+
+    void endGame()
+    {
+        Time.timeScale = 0;
+        GameObject endScreen = Instantiate(endScreenPrefab);
+        Image winner = endScreen.transform.Find("playerWinner").GetComponent<Image>();
+        if (p1Score < p2Score)
+        {
+            winner.sprite = winner2;
+        }
+        // TODO: else if (p1Score == p2Score)  winner.sprite = tie;
+        Button playAgain = endScreen.transform.Find("PlayAgainButton").GetComponent<Button>();
+        playAgain.onClick.AddListener(newGame);
+    }
+    void newGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
