@@ -17,7 +17,7 @@ public class BodyScript : MonoBehaviour
     public float rechargeRate;
     private List<GameObject> links;
     public int playerNum;
-    public static int initialLinksPerPlayer = 6;
+    public static int initialLinksPerPlayer = 8;
     private GameObject playerParent;
 
     [Range(0.1f, 10f)] 
@@ -81,7 +81,7 @@ public class BodyScript : MonoBehaviour
     void FixedUpdate() {
         if (hitPenalty > 0)
         {
-            hitPenalty -= Time.deltaTime;
+            hitPenalty = (hitPenalty - Time.deltaTime >= 0) ? hitPenalty - Time.deltaTime : 0;
             return;
         }
         if (Input.GetKey(left))
@@ -112,7 +112,6 @@ public class BodyScript : MonoBehaviour
         float percent = (stamina + change <= fullStamina) ? change : fullStamina - stamina;
         manager.changeStaminaPercent(playerNum, percent);
         stamina += percent;
-        //staminaBar.text = ((int)stamina).ToString();
     }
 
     void checkFoodPickup(GameObject link)
@@ -140,8 +139,6 @@ public class BodyScript : MonoBehaviour
         
         if (Poly.ContainsPoint(verArr, manager.getCurrentEgg().transform.position))
         {
-            // TODO: notify about the food that got eaten (Gameobject food)
-            // food.SetActive(false);
             manager.spawnEgg(true);
             manager.addPoint(playerNum);
             addLink();
@@ -163,7 +160,8 @@ public class BodyScript : MonoBehaviour
         shot.transform.position = transform.position;
         if (playerNum == 1) shot.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180));
         else shot.transform.rotation = transform.rotation;
-        shot.GetComponent<ShotScript>().setPlayer(playerNum);  
+        shot.GetComponent<ShotScript>().setPlayer(playerNum);
+        manager.soundSource.PlayOneShot(manager.sounds[playerNum]);
     }
 
     public void takeHit()

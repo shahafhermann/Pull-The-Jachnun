@@ -11,7 +11,9 @@ public class JachManager : MonoBehaviour
 {
     public GameObject p1;
     public GameObject p2;
-    public GameObject camera;
+    public new GameObject camera;
+    public AudioSource soundSource;
+    public List<AudioClip> sounds;
     public GameObject bar1;
     public GameObject bar2;
     public GameObject mask1;
@@ -51,6 +53,7 @@ public class JachManager : MonoBehaviour
     {
         timeUp = false;
         startPos = camera.transform.position;
+        soundSource = camera.GetComponent<AudioSource>();
         zoomCurr = zoomTime;
         spawnEgg(false);
         shotPool = new GameObject[30];
@@ -183,6 +186,8 @@ public class JachManager : MonoBehaviour
         // TODO: else if (p1Score == p2Score)  winner.sprite = tie;
         Button playAgain = endScreen.transform.Find("PlayAgainButton").GetComponent<Button>();
         playAgain.onClick.AddListener(newGame);
+        soundSource.clip = sounds[0];
+        soundSource.Play();
     }
     void newGame()
     {
