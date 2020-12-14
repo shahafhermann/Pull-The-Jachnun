@@ -37,7 +37,8 @@ public class JachManager : MonoBehaviour
     private GameObject curTomato;
     public GameObject tomatoPrefab;
     public Image tomatoWayPoint;
-    public Vector3 wayPointOffset;
+    public Vector3 eggWayPointOffset;
+    public Vector3 tomatoWayPointOffset;
     
     Vector3 startPos;
     private float staminaDrainFactor;
@@ -223,37 +224,46 @@ public class JachManager : MonoBehaviour
      * Food Waypoints
      */
     private void showWayPoints() {
-        // if (!curEgg.GetComponent<Renderer>().isVisible) {
-        //     if (!wayPoint.enabled) {
-        //         wayPoint.enabled = true;
-        //     }
-        
         // Egg
+        // if (!curEgg.GetComponent<Renderer>().isVisible) {
+        //     if (!eggWayPoint.enabled) {
+        //         eggWayPoint.enabled = true;
+        //     }
+            
         float minX = eggWayPoint.GetPixelAdjustedRect().width / 2;
         float maxX = Screen.width - minX;
         float minY = eggWayPoint.GetPixelAdjustedRect().height / 2;
         float maxY = Screen.height - minY;
 
-        Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + wayPointOffset);
+        Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + eggWayPointOffset);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         eggWayPoint.transform.position = pos;
+        // }
+        // else if (eggWayPoint.enabled) {
+        //     eggWayPoint.enabled = false;
+        // }
         
         // Tomato
+        // if (!curTomato.GetComponent<Renderer>().isVisible) {
+        //     if (!tomatoWayPoint.enabled) {
+        //         tomatoWayPoint.enabled = true;
+        //     }
+            
         minX = tomatoWayPoint.GetPixelAdjustedRect().width / 2;
         maxX = Screen.width - minX;
         minY = tomatoWayPoint.GetPixelAdjustedRect().height / 2;
         maxY = Screen.height - minY;
 
-        pos = Camera.main.WorldToScreenPoint(curTomato.transform.position + wayPointOffset);
+        pos = Camera.main.WorldToScreenPoint(curTomato.transform.position + tomatoWayPointOffset);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         tomatoWayPoint.transform.position = pos;
+        // }
+        // else if (tomatoWayPoint.enabled) {
+        //     tomatoWayPoint.enabled = false;
+        // }
         
-        // }
-        // else if (wayPoint.enabled) {
-        //     wayPoint.enabled = false;
-        // }
     }
 
     void endGame()

@@ -150,14 +150,14 @@ RectTransform:
   m_GameObject: {fileID: 79605882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 720540897}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -421.2, y: -183.1}
+  m_AnchoredPosition: {x: -425.9, y: -183.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79605884
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1090361442694172140, guid: a67d86697ce80408aaef836c139568bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d63b06b064d44773b26f404001782f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -748,9 +748,10 @@ MonoBehaviour:
   eggWayPoint: {fileID: 644087175}
   tomatoPrefab: {fileID: 6380074070190137343, guid: fb20c590093fa4690bec1e3b62cc21bf, type: 3}
   tomatoWayPoint: {fileID: 79605884}
-  wayPointOffset: {x: 0, y: 1, z: 0}
+  eggWayPointOffset: {x: 0, y: -0.05, z: 0}
+  tomatoWayPointOffset: {x: -0.2, y: 0, z: 0}
   timeUp: 0
-  roundTime: 10
+  roundTime: 60
   timerText: {fileID: 264415532}
   numbers:
   - {fileID: -7542371115539988336, guid: 3ddac1e07008149558b63c5d84341c67, type: 3}
@@ -810,14 +811,14 @@ RectTransform:
   m_GameObject: {fileID: 644087173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 1}
   m_Children: []
   m_Father: {fileID: 720540897}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -421.5, y: -200.5}
+  m_AnchoredPosition: {x: -421.1, y: -197}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &644087175
@@ -840,7 +841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2087857660863837901, guid: 9b63b4ef9ac5347f4bb86f039a328340, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e41ca9e4501f4716a9d8c273655ee8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
