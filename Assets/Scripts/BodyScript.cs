@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BodyScript : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class BodyScript : MonoBehaviour
     public float rechargeRate;
     private List<GameObject> links;
     public int playerNum;
-    public static int initialLinksPerPlayer = 5;
+    public static int initialLinksPerPlayer = 6;
     private GameObject playerParent;
 
     [Range(0.1f, 10f)] 

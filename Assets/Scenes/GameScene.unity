@@ -397,7 +397,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 720540897}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -479,6 +479,7 @@ MonoBehaviour:
   mask1: {fileID: 213153500}
   mask2: {fileID: 1708075805}
   uiCanvas: {fileID: 720540896}
+  endScreenPrefab: {fileID: 112189620216861599, guid: beea4ff229273af43ae7f86490adb61d, type: 3}
   shotPrefab: {fileID: 5404780136163638218, guid: bd2aeb7101c56e6418fe7711e1ebb7f0, type: 3}
   maxCameraDistance: 24
   viewMargin: 4
@@ -671,8 +672,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 213153501}
-  - {fileID: 1708075806}
   - {fileID: 351578534}
+  - {fileID: 1708075806}
   - {fileID: 1073625127}
   - {fileID: 644087174}
   m_Father: {fileID: 0}
@@ -1093,7 +1094,7 @@ RectTransform:
   m_Children:
   - {fileID: 1456593138}
   m_Father: {fileID: 720540897}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1244,10 +1245,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 842081762885470089, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 842081762885470090, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1292,105 +1289,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4863145119793629188, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283613, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283615, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: fire
-      value: 305
-      objectReference: {fileID: 0}
     - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 418716649}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: moveCost
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: moveSpeed
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: shootCost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: fullStamina
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: rechargeRate
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283617, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: rotationSpeed
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307533283618, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.019417802
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055877, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.019417802
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: fire
-      value: 306
-      objectReference: {fileID: 0}
     - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 418716649}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: moveCost
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: moveSpeed
-      value: 5.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: shootCost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: fullStamina
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: rechargeRate
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055878, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: rotationSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055928, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259146307610055930, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf876f496d5cb5b468a3fc4f101ccc94, type: 3}

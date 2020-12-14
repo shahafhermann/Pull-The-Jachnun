@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5247520805781075322, guid: 127ce5953d5d80442bb45d46eb4bbff2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5247520805781075322, guid: 127ce5953d5d80442bb45d46eb4bbff2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252189, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Mass
       value: 14
@@ -195,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Constraints
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Anchor.x
@@ -203,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 1.6194177
+      value: 0.019417802
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -226,6 +230,10 @@ PrefabInstance:
       value: 261
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: fire
+      value: 306
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: left
       value: 97
       objectReference: {fileID: 0}
@@ -242,16 +250,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8259146307610055930}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: moveCost
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: moveSpeed
-      value: 3.5
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: shootCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: fullStamina
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: rechargeRate
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: rotationSpeed
-      value: 60
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
@@ -320,6 +344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JHead_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252189, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Mass
       value: 14
@@ -330,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252191, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Constraints
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_Enabled
@@ -342,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -1.6194177
+      value: -0.019417802
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252192, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -361,6 +389,10 @@ PrefabInstance:
       value: 274
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: fire
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: left
       value: 276
       objectReference: {fileID: 0}
@@ -377,12 +409,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8259146307533283613}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: moveCost
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: moveSpeed
-      value: 3.5
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: shootCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: fullStamina
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
+      propertyPath: rechargeRate
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8732986726111252195, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
       propertyPath: rotationSpeed
-      value: 60
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3509c05a8f4c1478e37b697c7a27a6, type: 3}
