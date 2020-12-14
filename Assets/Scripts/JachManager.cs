@@ -36,9 +36,11 @@ public class JachManager : MonoBehaviour
     private bool timeUp;
     private int p1Score = 0;
     private int p2Score = 0;
+    
+    public Image wayPoint;
+    
     private GameObject[] shotPool;
     int currShotIdx;
-
 
     private void Awake()
     {
@@ -152,6 +154,26 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         camera.transform.position = moveCamera();
+
+        // Food Waypoints
+        if(!curEgg.GetComponent<Renderer>().isVisible){
+            if (!wayPoint.enabled) {
+                wayPoint.enabled = true;
+            }
+            float minX = wayPoint.GetPixelAdjustedRect().width / 2;
+            float maxX = Screen.width - minX;
+            float minY = wayPoint.GetPixelAdjustedRect().height / 2;
+            float maxY = Screen.height - minY;
+
+            Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position);
+            pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            wayPoint.transform.position = pos;
+        }
+        else if (wayPoint.enabled){
+            wayPoint.enabled = false;
+        }
+        
         if (Input.GetKeyDown(KeyCode.R)) // TODO: delete
         {
             timeUp = true;
