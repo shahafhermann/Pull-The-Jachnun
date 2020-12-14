@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1901728004160747292
+--- !u!1 &6380074070190137343
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1901728004160747282}
-  - component: {fileID: 1901728004160747293}
-  - component: {fileID: 1901728004160747280}
-  - component: {fileID: 1901728004160747283}
-  - component: {fileID: -3850537058120045874}
+  - component: {fileID: 4396182790453148369}
+  - component: {fileID: 3764772097002793945}
+  - component: {fileID: -266530506862640471}
+  - component: {fileID: -5065861166384234351}
+  - component: {fileID: -773981502747170505}
   m_Layer: 0
-  m_Name: Egg
+  m_Name: tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1901728004160747282
+--- !u!4 &4396182790453148369
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901728004160747292}
+  m_GameObject: {fileID: 6380074070190137343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.12, y: -1.21, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: -9.05415, y: -2.5761404, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1901728004160747293
+--- !u!212 &3764772097002793945
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901728004160747292}
+  m_GameObject: {fileID: 6380074070190137343}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,26 +73,26 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -2087857660863837901, guid: 9b63b4ef9ac5347f4bb86f039a328340, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 1090361442694172140, guid: a67d86697ce80408aaef836c139568bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.84, y: 2.22}
+  m_Size: {x: 3.6309547, y: 4.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1901728004160747280
+--- !u!50 &-266530506862640471
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901728004160747292}
+  m_GameObject: {fileID: 6380074070190137343}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -106,33 +106,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1901728004160747283
+--- !u!70 &-5065861166384234351
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901728004160747292}
+  m_GameObject: {fileID: 6380074070190137343}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04451931, y: -0.025364963}
-  m_Size: {x: 4.7638474, y: 4.1575603}
+  m_Offset: {x: -0.22055711, y: 0.10030202}
+  m_Size: {x: 3.1961014, y: 2.707309}
   m_Direction: 1
---- !u!95 &-3850537058120045874
+--- !u!95 &-773981502747170505
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901728004160747292}
+  m_GameObject: {fileID: 6380074070190137343}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9731cc36fca22417aa37a72b1d267ba9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78dbaa88c61f2420fb8dcf23f37f42a0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

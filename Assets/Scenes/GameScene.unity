@@ -123,6 +123,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &79605882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79605883}
+  - component: {fileID: 79605885}
+  - component: {fileID: 79605884}
+  m_Layer: 5
+  m_Name: TomatoWayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &79605883
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79605882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 720540897}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -421.2, y: -183.1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &79605884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79605882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1090361442694172140, guid: a67d86697ce80408aaef836c139568bf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &79605885
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79605882}
+  m_CullTransparentMesh: 0
 --- !u!1 &153243606
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,10 +726,7 @@ MonoBehaviour:
   p2: {fileID: 307600876}
   camera: {fileID: 271069891}
   soundSource: {fileID: 0}
-  sounds:
-  - {fileID: 8300000, guid: d4178acefa1ac9e4493a732e95c43a97, type: 3}
-  - {fileID: 8300000, guid: 8e4b9f99e0092fb4797abc200158ea23, type: 3}
-  - {fileID: 8300000, guid: d949cd607fc0fec4a8ef4202203892ea, type: 3}
+  sounds: []
   bar1: {fileID: 1023622766}
   bar2: {fileID: 1456593137}
   mask1: {fileID: 213153500}
@@ -670,8 +742,11 @@ MonoBehaviour:
   links: []
   foods: []
   eggPrefab: {fileID: 1901728004160747292, guid: a9b227ac0de5d4ed9b080a45bbabd7b6, type: 3}
-  wayPoint: {fileID: 644087175}
+  eggWayPoint: {fileID: 644087175}
+  tomatoPrefab: {fileID: 6380074070190137343, guid: fb20c590093fa4690bec1e3b62cc21bf, type: 3}
+  tomatoWayPoint: {fileID: 79605884}
   wayPointOffset: {x: 0, y: 1, z: 0}
+  timeUp: 0
   roundTime: 60
   timerText: {fileID: 264415532}
 --- !u!4 &418716650
@@ -702,7 +777,7 @@ GameObject:
   - component: {fileID: 644087176}
   - component: {fileID: 644087175}
   m_Layer: 5
-  m_Name: WayPoint
+  m_Name: EggWayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -863,6 +938,7 @@ RectTransform:
   - {fileID: 1404061060}
   - {fileID: 644087174}
   - {fileID: 264415531}
+  - {fileID: 79605883}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

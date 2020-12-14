@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -30,14 +31,18 @@ public class JachManager : MonoBehaviour
     public List<GameObject> links;
     public List<GameObject> foods;
     
+    private GameObject curEgg;
     public GameObject eggPrefab;
-    public Image wayPoint;
+    public Image eggWayPoint;
+    private GameObject curTomato;
+    public GameObject tomatoPrefab;
+    public Image tomatoWayPoint;
     public Vector3 wayPointOffset;
     
     Vector3 startPos;
-    private GameObject curEgg;
     private float staminaDrainFactor;
-    
+
+    public bool timeUp = false;
     public float roundTime;
     public Text timerText;
     
@@ -52,7 +57,6 @@ public class JachManager : MonoBehaviour
         foods = new List<GameObject>();
         links = new List<GameObject>();
         links.Add(GameObject.Find("mid_link"));
-        // roundTime = 60;
     }
 
     void Start()
@@ -61,7 +65,10 @@ public class JachManager : MonoBehaviour
         startPos = camera.transform.position;
         soundSource = camera.GetComponent<AudioSource>();
         zoomCurr = zoomTime;
-        spawnEgg(false);
+        
+        spawnFood("egg");
+        spawnFood("tomato");
+        
         shotPool = new GameObject[30];
         staminaDrainFactor = 0;
         for (int i = 0; i < 20; i++)
@@ -95,14 +102,15 @@ public class JachManager : MonoBehaviour
         return curEgg;
     }
     
+    public GameObject getCurrentTomato() {
+        return curTomato;
+    }
+    
     /**
      * Instantiate the first egg at a position different than the player's
      */
-    public GameObject spawnEgg(bool destroyOld) {
-        // if (destroyOld) {
-        //     Destroy(curEgg);
-        // }
-        GameObject prevEgg = curEgg;
+    public GameObject spawnFood(String food) {
+        GameObject prevFood = food.Equals("egg") ? curEgg : curTomato;
         
         int xPos, yPos;
         bool notValid = true;
@@ -129,12 +137,17 @@ public class JachManager : MonoBehaviour
                 continue; }
             
             // Passed the tests, instantiate
-            curEgg = Instantiate(eggPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
+            if (food.Equals("egg")) {
+                curEgg = Instantiate(eggPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
+            }
+            else {
+                curTomato = Instantiate(tomatoPrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
+            }
             // foods.Add(curEgg);
             notValid = false;
         }
 
-        return prevEgg;
+        return prevFood;
     }
 
     Vector3 moveCamera()
@@ -196,16 +209,29 @@ public class JachManager : MonoBehaviour
         //     if (!wayPoint.enabled) {
         //         wayPoint.enabled = true;
         //     }
-            
-        float minX = wayPoint.GetPixelAdjustedRect().width / 2;
+        
+        // Egg
+        float minX = eggWayPoint.GetPixelAdjustedRect().width / 2;
         float maxX = Screen.width - minX;
-        float minY = wayPoint.GetPixelAdjustedRect().height / 2;
+        float minY = eggWayPoint.GetPixelAdjustedRect().height / 2;
         float maxY = Screen.height - minY;
 
         Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + wayPointOffset);
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
-        wayPoint.transform.position = pos;
+        eggWayPoint.transform.position = pos;
+        
+        // Tomato
+        minX = tomatoWayPoint.GetPixelAdjustedRect().width / 2;
+        maxX = Screen.width - minX;
+        minY = tomatoWayPoint.GetPixelAdjustedRect().height / 2;
+        maxY = Screen.height - minY;
+
+        pos = Camera.main.WorldToScreenPoint(curTomato.transform.position + wayPointOffset);
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        tomatoWayPoint.transform.position = pos;
+        
         // }
         // else if (wayPoint.enabled) {
         //     wayPoint.enabled = false;
