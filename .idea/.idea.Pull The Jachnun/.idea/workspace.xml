@@ -35,9 +35,10 @@
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/StartGame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Border Collie/Assets/Scripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PushBack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/InstructionsMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BodyScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C2BB9C3C-A6A7-4E06-B80F-A840EEBFCC08/16/b33e6141/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Desktop/JachManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/JachManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../Personal/Unity/TableRunner/Assets/Scripts/Sound.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -49,6 +50,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/FoodWaypoint.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BodyScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/JachManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InstructionsMenu.cs" />
       </list>
     </option>
   </component>
