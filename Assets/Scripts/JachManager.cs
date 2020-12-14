@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class JachManager : MonoBehaviour
@@ -19,9 +20,11 @@ public class JachManager : MonoBehaviour
 
     public GameObject eggPrefab;
     private GameObject curEgg;
-    
+
     private int p1Score = 0;
     private int p2Score = 0;
+    
+    public Image img;
     
     private void Awake()
     {
@@ -110,5 +113,20 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         camera.transform.position = moveCamera();
+        
+        // Handle food waypoint
+        
+        float minX = img.GetPixelAdjustedRect().width / 2;
+        float maxX = Screen.width - minX;
+        
+        float minY = img.GetPixelAdjustedRect().height / 2;
+        float maxY = Screen.height - minY;
+
+        Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position);
+
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        img.transform.position = pos;
     }
 }
