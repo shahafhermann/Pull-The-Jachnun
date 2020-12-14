@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+
 
 public class JachManager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class JachManager : MonoBehaviour
     public GameObject bar2;
     public GameObject mask1;
     public GameObject mask2;
+    public Canvas uiCanvas;
     public GameObject shotPrefab;
     private GameObject[] shotPool;
     int currShotIdx;
@@ -23,7 +26,6 @@ public class JachManager : MonoBehaviour
     public List<GameObject> links;
     public List<GameObject> foods;
     Vector3 startPos;
-
     public GameObject eggPrefab;
     private GameObject curEgg;
     private float staminaDrainFactor;
@@ -131,7 +133,7 @@ public class JachManager : MonoBehaviour
         GameObject stamina = (player == 1) ? bar1 : bar2;
         GameObject mask = (player == 1) ? mask1 : mask2;
         if (staminaDrainFactor == 0) staminaDrainFactor =
-                stamina.transform.GetComponent<RectTransform>().rect.height;
+                stamina.transform.GetComponent<RectTransform>().rect.height * uiCanvas.scaleFactor;
         Vector3 move = Vector3.up * staminaDrainFactor * (percent / 100);
         stamina.transform.position -= move;
         mask.transform.position += move;
