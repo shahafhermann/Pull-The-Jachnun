@@ -8,6 +8,7 @@
           <e p="BodyScript.cs" t="Include" />
           <e p="JachManager.cs" t="Include" />
           <e p="PushBack.cs" t="Include" />
+          <e p="ShotScript.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

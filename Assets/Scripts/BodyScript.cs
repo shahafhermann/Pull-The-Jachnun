@@ -63,12 +63,7 @@ public class BodyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
-        {
-            addLink();
-        }
-        if (playerNum == 2 && Input.GetKeyDown(KeyCode.LeftAlt))  // TODO: detect circle closure instead
+        if (playerNum == 2 && Input.GetKeyDown(KeyCode.LeftAlt))
         {
             addLink();
         }

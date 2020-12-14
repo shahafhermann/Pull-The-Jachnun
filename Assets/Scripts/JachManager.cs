@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class JachManager : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class JachManager : MonoBehaviour
     private float staminaDrainFactor;
     private int p1Score = 0;
     private int p2Score = 0;
+
+    public Image wayPoint;
+    public Vector3 wayPointOffset;
     
     private void Awake()
     {
@@ -141,5 +145,16 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         camera.transform.position = moveCamera();
+
+        // Food Waypoints
+        float minX = wayPoint.GetPixelAdjustedRect().width / 2;
+        float maxX = Screen.width - minX;
+        float minY = wayPoint.GetPixelAdjustedRect().height / 2;
+        float maxY = Screen.height - minY;
+
+        Vector2 pos = Camera.main.WorldToScreenPoint(curEgg.transform.position + wayPointOffset);
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        wayPoint.transform.position = pos;
     }
 }
