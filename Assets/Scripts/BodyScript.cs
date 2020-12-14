@@ -64,10 +64,6 @@ public class BodyScript : MonoBehaviour
     void Update()
     {
         if (Time.timeScale == 0) return;
-        if (playerNum == 2 && Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            addLink();
-        }
         if (hitPenalty == 0 && Input.GetKeyDown(fire))
         {
             if (shootCost <= stamina)

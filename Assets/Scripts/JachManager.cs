@@ -42,11 +42,8 @@ public class JachManager : MonoBehaviour
     
     Vector3 startPos;
     private float staminaDrainFactor;
-
-    public bool timeUp = false;
     public float roundTime;
     public Text timerText;
-    
     private int p1Score = 0;
     private int p2Score = 0;
     private int p1Eggs = 0;
@@ -270,12 +267,20 @@ public class JachManager : MonoBehaviour
     {
         Time.timeScale = 0;
         GameObject endScreen = Instantiate(endScreenPrefab);
-        Image winner = endScreen.transform.Find("playerWinner").GetComponent<Image>();
+        Image playerWinner = endScreen.transform.Find("playerWinner").GetComponent<Image>();
         if (p1Score < p2Score)
         {
-            winner.sprite = winner2;
+            playerWinner.sprite = winner2;
         }
-        // TODO: else if (p1Score == p2Score)  winner.sprite = tie;
+        else if (p1Score == p2Score)
+        {
+            endScreen.transform.Find("winner").gameObject.SetActive(false);
+            Rect rect = endScreen.transform.Find("playerWinner").GetComponent<RectTransform>().rect;
+            rect.x = -24.32f;
+            rect.height = 120;
+            rect.width = 133;
+            playerWinner.sprite = tie;
+        }
         Button playAgain = endScreen.transform.Find("PlayAgainButton").GetComponent<Button>();
         playAgain.onClick.AddListener(newGame);
         soundSource.clip = sounds[0];
