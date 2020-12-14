@@ -13,7 +13,6 @@ public class BodyScript : MonoBehaviour
     public float hitPenalty;
     public float fullStamina;
     public float stamina;
-    public Text staminaBar;
     public float moveCost;
     public int shootCost;
     public float rechargeRate;
@@ -64,6 +63,7 @@ public class BodyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space))  // TODO: detect circle closure instead
         {
             addLink();
@@ -77,10 +77,11 @@ public class BodyScript : MonoBehaviour
             if (shootCost <= stamina)
             {
                 shoot();
-                stamina -= shootCost;
+                staminaHandler(-shootCost);
             }
-        }
-        staminaHandler();
+        }        
+        staminaHandler(rechargeRate * Time.deltaTime);
+        
     }
 
     void FixedUpdate() {
@@ -102,7 +103,7 @@ public class BodyScript : MonoBehaviour
         if (Input.GetKey(up)) {
             if (moveCost <= stamina)
             {
-                stamina -= moveCost;
+                staminaHandler(-moveCost);
                 int dir = (playerNum == 1) ? -1 : 1;
                 Vector2 direction = dir * transform.right;
                 headBody.MovePosition(headBody.position + moveSpeed * Time.deltaTime * direction);
@@ -111,13 +112,13 @@ public class BodyScript : MonoBehaviour
         }
     }
 
-    void staminaHandler()
+    void staminaHandler(float change)
     {
-        if (stamina < fullStamina)
-        {
-            stamina = (stamina + rechargeRate * Time.deltaTime <= fullStamina) ? stamina + rechargeRate * Time.deltaTime : fullStamina;
-        }
-        staminaBar.text = ((int)stamina).ToString();
+        if ((stamina == 100 && change > 0) || (stamina == 0 && change < 0)) return;
+        float percent = (stamina + change <= fullStamina) ? change : fullStamina - stamina;
+        manager.changeStaminaPercent(playerNum, percent);
+        stamina += percent;
+        //staminaBar.text = ((int)stamina).ToString();
     }
 
     void checkFoodPickup(GameObject link)

@@ -9,6 +9,10 @@ public class JachManager : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
     public GameObject camera;
+    public GameObject bar1;
+    public GameObject bar2;
+    public GameObject mask1;
+    public GameObject mask2;
     public GameObject shotPrefab;
     private GameObject[] shotPool;
     int currShotIdx;
@@ -22,7 +26,7 @@ public class JachManager : MonoBehaviour
 
     public GameObject eggPrefab;
     private GameObject curEgg;
-    
+    private float staminaDrainFactor;
     private int p1Score = 0;
     private int p2Score = 0;
     
@@ -39,6 +43,7 @@ public class JachManager : MonoBehaviour
         zoomCurr = zoomTime;
         spawnEgg(false);
         shotPool = new GameObject[30];
+        staminaDrainFactor = 0;
         for (int i = 0; i < 20; i++)
         {
             shotPool[i] = Instantiate(shotPrefab);
@@ -121,7 +126,16 @@ public class JachManager : MonoBehaviour
         return Vector3.Lerp(new Vector3(camX, camY, camZ), startPos, zoomCurr / zoomTime);
     }
 
-
+    public void changeStaminaPercent(int player, float percent)
+    {
+        GameObject stamina = (player == 1) ? bar1 : bar2;
+        GameObject mask = (player == 1) ? mask1 : mask2;
+        if (staminaDrainFactor == 0) staminaDrainFactor =
+                stamina.transform.GetComponent<RectTransform>().rect.height;
+        Vector3 move = Vector3.up * staminaDrainFactor * (percent / 100);
+        stamina.transform.position -= move;
+        mask.transform.position += move;
+    }
 
     // Update is called once per frame
     void Update()
