@@ -48,6 +48,15 @@ public class JachManager : MonoBehaviour
     
     private int p1Score = 0;
     private int p2Score = 0;
+    private int p1Eggs = 0;
+    private int p2Eggs = 0;
+    private int p1Tomatoes = 0;
+    private int p2Tomatoes = 0;
+    public Sprite[] numbers;
+    public Image p1TomatoImg;
+    public Image p1EggImg;
+    public Image p2TomatoImg;
+    public Image p2EggImg;
 
     private GameObject[] shotPool;
     int currShotIdx;
@@ -87,13 +96,31 @@ public class JachManager : MonoBehaviour
         return shot;
     }
 
-    public void addPoint(int playerNum) {
+    public void addPoint(int playerNum, String food) {
         switch (playerNum) {
             case 1:
                 p1Score++;
+                if (food.Equals("egg")) {
+                    p1Eggs++;
+                    p1EggImg.sprite = numbers[p1Eggs];
+                }
+                else {
+                    p1Tomatoes++;
+                    p1Score++;
+                    p1TomatoImg.sprite = numbers[p1Tomatoes];
+                }
                 break;
             case 2:
                 p2Score++;
+                if (food.Equals("egg")) {
+                    p2Eggs++;
+                    p2EggImg.sprite = numbers[p2Eggs];
+                }
+                else {
+                    p2Tomatoes++;
+                    p2Score++;
+                    p2TomatoImg.sprite = numbers[p2Tomatoes];
+                }
                 break;
         }
     }

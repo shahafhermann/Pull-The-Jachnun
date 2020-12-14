@@ -144,14 +144,14 @@ public class BodyScript : MonoBehaviour
             GameObject curEgg = manager.spawnFood("egg");
             manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", false);
             StartCoroutine(showAnimation(curEgg));
-            manager.addPoint(playerNum);
+            manager.addPoint(playerNum, "egg");
             addLink();
         } else if (Poly.ContainsPoint(verArr, manager.getCurrentTomato().transform.position)) {
             // manager.getCurrentEgg().GetComponent<Animator>().SetBool("PickedUp", true);
             GameObject curTomato = manager.spawnFood("tomato");
             manager.getCurrentTomato().GetComponent<Animator>().SetBool("PickedUp", false);
             StartCoroutine(showAnimation(curTomato));
-            manager.addPoint(playerNum);
+            manager.addPoint(playerNum, "tomato");
             addLink();
         }
     }
