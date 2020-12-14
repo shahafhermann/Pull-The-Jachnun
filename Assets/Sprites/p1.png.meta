@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -8310578835852675831
     second: p1_num
+  - first:
+      213: -5533064408089820259
+    second: p1text
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,7 +103,7 @@ TextureImporter:
         width: 111
         height: 165
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -108,6 +111,27 @@ TextureImporter:
       bones: []
       spriteID: 9053f138494eaac80800000000000000
       internalID: -8310578835852675831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p1text
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 289
+        width: 621
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93037c7c3b9633b0800000000000000
+      internalID: -5533064408089820259
       vertices: []
       indices: 
       edges: []
