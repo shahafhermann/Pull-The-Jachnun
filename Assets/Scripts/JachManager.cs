@@ -98,10 +98,11 @@ public class JachManager : MonoBehaviour
     /**
      * Instantiate the first egg at a position different than the player's
      */
-    public void spawnEgg(bool destroyOld) {
-        if (destroyOld) {
-            Destroy(curEgg);
-        }
+    public GameObject spawnEgg(bool destroyOld) {
+        // if (destroyOld) {
+        //     Destroy(curEgg);
+        // }
+        GameObject prevEgg = curEgg;
         
         int xPos, yPos;
         bool notValid = true;
@@ -132,6 +133,8 @@ public class JachManager : MonoBehaviour
             // foods.Add(curEgg);
             notValid = false;
         }
+
+        return prevEgg;
     }
 
     Vector3 moveCamera()
@@ -161,18 +164,27 @@ public class JachManager : MonoBehaviour
     void Update()
     {
         if (Time.timeScale == 0) return;
-        camera.transform.position = moveCamera();        
+        
+        camera.transform.position = moveCamera(); 
+        
         showWayPoints();
-        if (roundTime > 0)
+        
+        // Check Timer
+        if (timeUp)
         {
-            roundTime -= Time.deltaTime;
-            roundTime = (roundTime < 0) ? 0 : roundTime;
-            timerText.text = ((int) roundTime).ToString();
-        }
-        else
-        {
-            roundTime = 0; // Redundant
             endGame();
+            timeUp = false;
+        }
+        else {
+            if (roundTime > 0) {
+                roundTime -= Time.deltaTime;
+                roundTime = (roundTime < 0) ? 0 : roundTime;
+                timerText.text = ((int) roundTime).ToString();
+            }
+            else {
+                roundTime = 0;
+                timeUp = true;
+            }
         }
     }
 
