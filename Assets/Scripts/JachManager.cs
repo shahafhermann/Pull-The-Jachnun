@@ -38,7 +38,6 @@ public class JachManager : MonoBehaviour
     private GameObject curEgg;
     private float staminaDrainFactor;
     
-    private bool timeUp;
     public float roundTime;
     public Text timerText;
     
@@ -53,14 +52,12 @@ public class JachManager : MonoBehaviour
         foods = new List<GameObject>();
         links = new List<GameObject>();
         links.Add(GameObject.Find("mid_link"));
-
-        timeUp = false;
         // roundTime = 60;
     }
 
     void Start()
     {
-        timeUp = false;
+        Time.timeScale = 1;
         startPos = camera.transform.position;
         soundSource = camera.GetComponent<AudioSource>();
         zoomCurr = zoomTime;
@@ -163,28 +160,19 @@ public class JachManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        camera.transform.position = moveCamera();
-        
+        if (Time.timeScale == 0) return;
+        camera.transform.position = moveCamera();        
         showWayPoints();
-        
-        // Check Timer
-        if (timeUp)
+        if (roundTime > 0)
         {
-            endGame();
-            timeUp = false;
+            roundTime -= Time.deltaTime;
+            roundTime = (roundTime < 0) ? 0 : roundTime;
+            timerText.text = ((int) roundTime).ToString();
         }
-        else {
-            if (roundTime > 0)
-            {
-                roundTime -= Time.deltaTime;
-                roundTime = (roundTime < 0) ? 0 : roundTime;
-                timerText.text = ((int) roundTime).ToString();
-            }
-            else
-            {
-                roundTime = 0;
-                timeUp = true;
-            }
+        else
+        {
+            roundTime = 0; // Redundant
+            endGame();
         }
     }
 
@@ -229,7 +217,6 @@ public class JachManager : MonoBehaviour
     }
     void newGame()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
