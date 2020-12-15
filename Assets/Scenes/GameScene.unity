@@ -735,7 +735,7 @@ MonoBehaviour:
   mask1: {fileID: 213153500}
   mask2: {fileID: 1708075805}
   uiCanvas: {fileID: 720540896}
-  endScreenPrefab: {fileID: 112189620216861599, guid: beea4ff229273af43ae7f86490adb61d, type: 3}
+  endScreenPrefab: {fileID: 4919189863195844570, guid: beea4ff229273af43ae7f86490adb61d, type: 3}
   shotPrefab: {fileID: 5404780136163638218, guid: bd2aeb7101c56e6418fe7711e1ebb7f0, type: 3}
   winner2: {fileID: -6908687712067422404, guid: 990c55c379a26e341b5480cc9c5f5667, type: 3}
   tie: {fileID: 21300000, guid: 5681804318e92da4797f9c7ade827223, type: 3}
