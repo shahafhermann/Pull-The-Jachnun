@@ -11,6 +11,5 @@ public class MainMenu : MonoBehaviour {
 
     public void Instructions() {
         instructionsMenu.SetActive(true);
-        gameObject.SetActive(false);
     }
 }
